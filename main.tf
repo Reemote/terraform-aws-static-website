@@ -12,7 +12,7 @@ locals {
 }
 
 resource "aws_s3_bucket" "this" {
-  bucket = "${replace(local.resource_name, "{}", "assets")}-${data.aws_region.current.id}-${data.aws_caller_identity.current.account_id}"
+  bucket = var.s3_bucket_name != "" ? var.s3_bucket_name : "${replace(local.resource_name, "{}", "assets")}-${data.aws_region.current.id}-${data.aws_caller_identity.current.account_id}"
   tags   = local.default_tags
 }
 

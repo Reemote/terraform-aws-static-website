@@ -9,8 +9,9 @@ This is a Terraform module to provision a static website using AWS S3 and CloudF
 ### Without Custom Domain
 ```
 module "static-website" {
-  source = "git@github.com:aashari/terraform-aws-static-website.git"
-  name   = "test.ashari.me"
+  source         = "git@github.com:aashari/terraform-aws-static-website.git"
+  name           = "test.ashari.me"
+  s3_bucket_name = "my-s3-bucket"
 }
 ```
 The code above will provide an S3 bucket and a Cloudfront Distribution serving static assets in an S3 bucket

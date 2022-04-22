@@ -80,3 +80,9 @@ variable "cloudflare_api_token" {
   default     = ""
   description = "Cloudflare API token"
 }
+
+variable "s3_bucket_name" {
+  type        = string
+  default     = ""
+  description = "S3 Bucket Name"
+}
