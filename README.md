@@ -11,7 +11,6 @@ This is a Terraform module to provision a static website using AWS S3 and CloudF
 module "static-website" {
   source         = "git@github.com:aashari/terraform-aws-static-website.git"
   name           = "test.ashari.me"
-  s3_bucket_name = "my-s3-bucket"
 }
 ```
 The code above will provide an S3 bucket and a Cloudfront Distribution serving static assets in an S3 bucket
@@ -95,6 +94,7 @@ The code above will provide an S3 bucket and a Cloudfront Distribution serving s
 | <a name="input_default_not_found_page"></a> [default\_not\_found\_page](#input\_default\_not\_found\_page) | Default not found page | `string` | `index.html` | no |
 | <a name="input_cloudfront_access_log_bucket"></a> [cloudfront\_access\_log\_bucket](#input\_cloudfront\_access\_log\_bucket) | Cloudfront access log bucket name | `string` |`""`| no |
 | <a name="input_cloudfront_access_log_enable_cookies"></a> [cloudfront\_access\_log\_enable\_cookies](#input\_cloudfront\_access\_log\_enable\_cookies) | Enable CloudFront access logs to include cookies | `bool` | `true` | no |
+| <a name="input_cloudfront_enable_cors"></a> [cloudfront\_enable\_cors](#input\_cloudfront\_enable\_cors) | Enable CloudFront CORS for preflight requests | `bool` | `false` | no |
 | <a name="input_cloudfront_function_file_path"></a> [cloudfront\_function\_file\_path](#input\_input\_cloudfront\_function\_file\_path) | Path to the CloudFront function file | `string` |`""`| no |
 | <a name="input_cloudfront_function_runtime"></a> [cloudfront\_function\_runtime](#input\_input\_cloudfront\_function\_runtime) | CloudFront function runtime | `string` | `cloudfront-js-1.0` | no |
 | <a name="input_cloudfront_function_type"></a> [cloudfront\_function\_type](#input\_input\_cloudfront\_function\_type) | CloudFront function event type to trigger | `string` | `viewer-request` | no |
@@ -103,6 +103,7 @@ The code above will provide an S3 bucket and a Cloudfront Distribution serving s
 | <a name="input_custom_domain_zone_id"></a> [custom\_domain\_zone\_id](#input\_custom\_domain\_zone\_id) | Domain Provider zone ID which custom domain is registered to.<br />In Cloudflare this is called Zone Id, in Route53 this is called Hosted Zone Id  | `string` | `""` | yes if <a name="input_custom_domain_provider"></a> [custom\_domain\_provider](#input\_custom\_domain\_provider) is not empty  |
 | <a name="input_custom_domain_ttl"></a> [custom\_domain\_ttl](#input\_custom\_domain\_ttl) | Custom domain TTL  | `number` | `300` | no |
 | <a name="input_cloudflare_api_token"></a> [cloudflare\_api\_token](#input\_cloudflare\_api\_token) | Cloudflare API token  | `string` | `""` | yes if <a name="input_custom_domain_provider"></a> [custom\_domain\_provider](#input\_custom\_domain\_provider) is equal to `CLOUDFLARE`  |
+| <a name="input_s3_bucket_name"></a> [s3\_bucket\_name](#input\_s3\_bucket\_name) | S3 Bucket Name  | `string` | `""` | S3 Custom bucket name |
 
 ## Outputs
 
