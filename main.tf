@@ -119,13 +119,15 @@ resource "aws_cloudfront_distribution" "this" {
     target_origin_id       = aws_s3_bucket.this.bucket
     viewer_protocol_policy = "redirect-to-https"
 
-    allowed_methods = ["GET", "HEAD"]
-    cached_methods  = ["GET", "HEAD"]
+    allowed_methods = ["GET", "HEAD", "OPTIONS"]
+    cached_methods  = ["GET", "HEAD", "OPTIONS"]
 
     forwarded_values {
       query_string = true
       cookies { forward = "all" }
     }
+
+    response_headers_policy_id = var.cloudfront_enable_cors ? "eaab4381-ed33-4a86-88ca-d9558dc6cd63" : null
 
     dynamic "function_association" {
       for_each = var.cloudfront_function_file_path != "" ? [{}] : []

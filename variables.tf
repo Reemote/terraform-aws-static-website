@@ -86,3 +86,9 @@ variable "s3_bucket_name" {
   default     = ""
   description = "S3 Bucket Name"
 }
+
+variable "cloudfront_enable_cors" {
+  type        = bool
+  default     = false
+  description = "If true AWS managed policy 'CORS-with-preflight-and-SecurityHeadersPolicy' will be added"
+}
