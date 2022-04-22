@@ -127,7 +127,7 @@ resource "aws_cloudfront_distribution" "this" {
       cookies { forward = "all" }
     }
 
-    response_headers_policy_id = var.cloudfront_enable_cors ? "eaab4381-ed33-4a86-88ca-d9558dc6cd63" : null
+    response_headers_policy_id = var.cloudfront_enable_cors == true ? "eaab4381-ed33-4a86-88ca-d9558dc6cd63" : null
 
     dynamic "function_association" {
       for_each = var.cloudfront_function_file_path != "" ? [{}] : []
