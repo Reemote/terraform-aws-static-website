@@ -122,6 +122,11 @@ resource "aws_cloudfront_distribution" "this" {
     allowed_methods = ["GET", "HEAD", "OPTIONS"]
     cached_methods  = ["GET", "HEAD", "OPTIONS"]
 
+    # delegate cache control to s3
+    min_ttl     = 0
+    default_ttl = 0
+    max_ttl     = 0
+
     forwarded_values {
       query_string = true
       cookies { forward = "all" }
